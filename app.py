@@ -7,7 +7,7 @@ from flask_login import LoginManager, login_user
 from models import User
 from forms import RegistrationForm
 from database import db
-from werkzeug.urls import url_encode
+from flask import request
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'hard to guess string'
@@ -24,21 +24,20 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
+    print('index function')
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        # Handle login form submission
-        # ...
-        return redirect(url_for('index'))
-    else:
-        # Render login form
-        # ...
-        return render_template('login.html')
+    """ login """
+    return redirect(url_for('index'))
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """
+    Register a new user.
+    """
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)

@@ -1,4 +1,4 @@
-#!/workspaces/TimeEntryDE/env/bin/python3
+#!/workspaces/TimeEntryDE/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
