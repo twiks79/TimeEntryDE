@@ -7,6 +7,7 @@ from flask_login import LoginManager, login_user
 from models import User
 from forms import RegistrationForm
 from database import db
+from werkzeug.urls import url_encode
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'hard to guess string'
